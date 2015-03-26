@@ -10,6 +10,7 @@ if (Meteor.isClient) {
       switch(e.which) {
         case 37: // left
           console.log("meteormaps.js:8", "left");
+          player.angle -= 0.1;
           break;
 
         case 38: // up
@@ -17,6 +18,8 @@ if (Meteor.isClient) {
           break;
 
         case 39: // right
+          player.angle += 0.1;
+          console.log("meteormaps.js:21", player);
           break;
 
         case 40: // down
@@ -42,16 +45,6 @@ if (Meteor.isClient) {
     }
   });
 
-  var player = {
-  	// preset of map options
-    pos: {
-      D: 0,
-      k: 0
-    },
-    angle: 40,
-    speed: 0.1
-  };
-
   Template.map.onCreated(function() {
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('exampleMap', function(map) {
@@ -61,27 +54,35 @@ if (Meteor.isClient) {
         map: map.instance
       });
 
+      player = {
+        // preset of map options
+        pos: new google.maps.LatLng(-37.8136, 144.9631),
+        angle: 0,
+        speed: 0.01
+      };
+
       globalmap = {
         marker : marker,
         map : map
       };
 
+
       function move() {
         requestAnimationFrame(move);
-        var pos = globalmap.marker.position;
+        var pos = player.pos;
 
-        pos.D += .01;
-        pos.k += .01;
+        pos.D += Math.sin(player.angle) * player.speed;
+        pos.k += Math.cos(player.angle) * player.speed;
 
         globalmap.map.instance.setCenter(pos);
-        // globalmap.marker.setPosition(pos);
       }
       move();
     });
 
     Players.insert({
-      text: player
+      // text: player
     });
+
   });
 }
 
