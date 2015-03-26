@@ -9,26 +9,34 @@ if (Meteor.isClient) {
     $(document).on('keydown', function (e) {
       switch(e.which) {
         case 37: // left
-          console.log("meteormaps.js:8", "left");
           player.angle -= 0.1;
+          updateAngle()
           break;
 
         case 38: // up
-          console.log("meteormaps.js:12", "up");
+          player.speed += 0.005;
           break;
 
         case 39: // right
           player.angle += 0.1;
-          console.log("meteormaps.js:21", player);
+          updateAngle()
           break;
 
         case 40: // down
+          player.speed -= 0.005;
           break;
 
         default: return; // exit this handler for other keys
       }
       e.preventDefault(); // prevent the default action (scroll / move caret)
     });
+
+    function updateAngle() {
+      console.log("meteormaps.js:35");
+      var angle = (player.angle / (2 * Math.PI)) * 360;
+      angle = angle + "deg";
+      $(".marker").attr("style","transform: rotate("+angle+");-webkit-transform: rotate("+angle+");-moz-transform: rotate("+angle+");-o-transform: rotate("+angle+");-ms-transform: rotate("+angle+");");
+    }
   });
 
   Template.map.helpers({
