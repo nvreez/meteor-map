@@ -37,10 +37,10 @@ if (Meteor.isClient) {
         var pos = globalmap.marker.position;
 
         pos.D += .01;
-        pos.k += 0;
+        pos.k += .01;
 
         globalmap.map.instance.setCenter(pos);
-        globalmap.marker.setPosition(pos);
+        // globalmap.marker.setPosition(pos);
       }
       move();
     });
