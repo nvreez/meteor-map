@@ -1,15 +1,18 @@
 <head>
-  <title>Meteormaps</title>
+	<title>Meteormaps</title>
 </head>
 
 <body>
-  <div class="map-container">
-  	<div class="marker">markor!</div>
-    {{> googleMap name="exampleMap" options=exampleMapOptions}}
-  </div>
+	{{> playa}}
+	{{> map}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="map">
+	<div class="map-container">
+		{{> googleMap name="exampleMap" options=exampleMapOptions}}
+	</div>
+</template>
+
+<template name="playa">
+	<div class="marker">markor!</div>
 </template>
