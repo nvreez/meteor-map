@@ -11,8 +11,8 @@
 
 .marker {
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: calc(50% - 32px);
+	left: calc(50% - 17px);
 	height: 64px;
 	width: 34px;
 	z-index: 100;
