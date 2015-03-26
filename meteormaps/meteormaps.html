@@ -6,6 +6,10 @@
   <h1>Welcome to Meteor!</h1>
 
   {{> hello}}
+
+  <div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div>
 </body>
 
 <template name="hello">
