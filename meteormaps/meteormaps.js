@@ -36,8 +36,8 @@ if (Meteor.isClient) {
         requestAnimationFrame(move);
         var pos = globalmap.marker.position;
 
-        pos.D += .1;
-        pos.k += .01;
+        pos.D += .01;
+        pos.k += 0;
 
         globalmap.map.instance.setCenter(pos);
         globalmap.marker.setPosition(pos);
