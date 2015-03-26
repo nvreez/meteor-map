@@ -40,6 +40,23 @@ if (Meteor.isClient) {
         position: map.options.center,
         map: map.instance
       });
+
+      globalmap = {
+        marker : marker,
+        map : map
+      };
+
+      function move() {
+        requestAnimationFrame(move);
+        var pos = globalmap.marker.position;
+
+        pos.D += .1;
+        pos.k += .01;
+
+        globalmap.map.instance.setCenter(pos);
+        globalmap.marker.setPosition(pos);
+      }
+      move();
     });
   });
 }
