@@ -1,2 +1,2 @@
 # meteor-map
-Toying around with meteor and google maps
+Toying around with Meteor and google maps.
